@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Médico Fiscal — CREMERS · Flashcards</title>
+
+<!-- Carregado o mais cedo possível para não perder o evento beforeinstallprompt -->
+<script src="js/pwaInstall.js"></script>
+
+<!-- PWA -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1f5f8b">
+
+<!-- Android/Chrome -->
+<meta name="mobile-web-app-capable" content="yes">
+
+<!-- iOS/Safari (não lê manifest.json para o modo de exibição; precisa destas tags) -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="MF CREMERS">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="icons/favicon-16.png">
+
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div id="app" class="app-shell"></div>
+
+<!-- Núcleo de dados -->
+<script src="js/storage.js"></script>
+<script src="js/srs.js"></script>
+<script src="js/cardsModel.js"></script>
+<script src="js/state.js"></script>
+<script src="js/stats.js"></script>
+<script src="js/session.js"></script>
+<script src="js/simulado.js"></script>
+
+<!-- Infraestrutura de UI -->
+<script src="js/ui.js"></script>
+<script src="js/router.js"></script>
+
+<!-- Views -->
+<script src="js/views/dashboard.js"></script>
+<script src="js/views/sessionSetup.js"></script>
+<script src="js/views/study.js"></script>
+<script src="js/views/importView.js"></script>
+<script src="js/views/browse.js"></script>
+<script src="js/views/normaDetail.js"></script>
+<script src="js/views/statsView.js"></script>
+<script src="js/views/simuladoSetup.js"></script>
+<script src="js/views/simuladoRun.js"></script>
+<script src="js/views/settingsView.js"></script>
+
+<!-- Bootstrap -->
+<script src="js/app.js"></script>
+
+<!-- PWA: registro do Service Worker (silencioso se o navegador não suportar
+     ou se a página estiver em contexto não seguro, ex.: file://) -->
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('sw.js').catch(function (err) {
+      console.warn('Service worker não registrado (normal em file:// ou http sem localhost):', err.message);
+    });
+  });
+}
+</script>
+</body>
+</html>
