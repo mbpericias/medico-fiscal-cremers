@@ -2,6 +2,8 @@
 
 Aplicativo web de estudo por repetição espaçada para o concurso de Médico Fiscal do CREMERS. Roda inteiramente no navegador, sem backend, sem conexão com IA e sem serviços pagos — todos os dados ficam salvos no seu próprio computador (localStorage).
 
+**Publicado em:** https://mbpericias.github.io/medico-fiscal-cremers/
+
 ## Como executar
 
 **Opção A — abrir diretamente (mais simples)**
