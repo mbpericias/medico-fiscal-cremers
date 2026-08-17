@@ -19,7 +19,7 @@
  * fetch online), só não entram no pré-cache da instalação.
  */
 
-var CACHE_NAME = 'mf-cremers-v6';
+var CACHE_NAME = 'mf-cremers-v7';
 
 var CORE_ASSETS = [
   './',
@@ -34,6 +34,7 @@ var CORE_ASSETS = [
   './js/stats.js',
   './js/session.js',
   './js/simulado.js',
+  './js/catalogSync.js',
   './js/ui.js',
   './js/router.js',
   './js/views/dashboard.js',
@@ -47,6 +48,7 @@ var CORE_ASSETS = [
   './js/views/simuladoRun.js',
   './js/views/settingsView.js',
   './js/app.js',
+  './data/catalog.json',
   './data/lei-3268-1957.json',
   './data/resolucao-cfm-2056-2013.json',
   './data/resolucao-cfm-2336-2023.json',

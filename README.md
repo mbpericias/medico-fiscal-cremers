@@ -50,22 +50,49 @@ Não há build step, bundler ou dependências externas: são arquivos `.html`/`.
 | `simulado.js` | Lógica do modo Simulado (seleção de cards objetivos, correção, relatório). |
 | `ui.js`, `router.js` | Utilitários de interface e roteamento por hash (`#/rota`). |
 | `pwaInstall.js` | Captura o prompt de instalação (Android/desktop) e detecta iOS/standalone. |
+| `catalogSync.js` | Sincroniza o banco local com `data/catalog.json` — só adiciona cards novos, nunca apaga/sobrescreve. |
 | `views/*.js` | Uma tela por arquivo. |
 | `app.js` | Bootstrap: monta o layout e registra as rotas. |
 
 `generate-icons.ps1` (raiz do projeto) gera os PNGs de `icons/` a partir de código (sem depender de nenhum editor de imagem); só precisa rodar de novo se quiser trocar o design do ícone.
 
-## Bancos de flashcards disponíveis
+## Catálogo de bancos oficiais
 
-| Arquivo | Norma | Cards | Como entra no app |
-|---|---|---|---|
-| [`data/lei-3268-1957.json`](data/lei-3268-1957.json) | Lei 3.268/1957 | 40 | Automático na primeira abertura (servido por `http://`/`https://`) |
-| [`data/resolucao-cfm-2056-2013.json`](data/resolucao-cfm-2056-2013.json) | Resolução CFM 2.056/2013 | 52 | Manual, pela tela **Importar flashcards** |
-| [`data/resolucao-cfm-2336-2023.json`](data/resolucao-cfm-2336-2023.json) | Resolução CFM 2.336/2023 | 58 | Manual, pela tela **Importar flashcards** |
+[`data/catalog.json`](data/catalog.json) lista os bancos **oficiais** — os que todo usuário deve ter automaticamente, sem precisar importar nada:
 
-Conteúdo jurídico sempre fornecido por você, sem qualquer alteração. Só o primeiro arquivo é carregado automaticamente (é o único bundle que a especificação original exigia já pronto na entrega); se você abrir o `index.html` direto com duplo clique (sem servidor), esse carregamento automático também não funciona por restrição do navegador — nesse caso, importe manualmente pela tela **Importar flashcards**, do mesmo jeito que os demais bancos.
+| Arquivo | Norma | Cards |
+|---|---|---|
+| [`data/lei-3268-1957.json`](data/lei-3268-1957.json) | Lei 3.268/1957 | 40 |
+| [`data/resolucao-cfm-2056-2013.json`](data/resolucao-cfm-2056-2013.json) | Resolução CFM 2.056/2013 | 52 |
+| [`data/resolucao-cfm-2336-2023.json`](data/resolucao-cfm-2336-2023.json) | Resolução CFM 2.336/2023 | 58 |
 
-Bancos futuros (Decreto 44.045/1958, outras resoluções do CFM etc.) seguem o mesmo formato e sempre entram por importação manual — o app nunca precisa de alteração de código para isso, novas normas aparecem sozinhas em todas as telas assim que você importa os cards. Veja [`docs/formato-json.md`](docs/formato-json.md) para o formato completo de cada campo, incluindo os tipos `certo_errado` e `multipla_escolha` usados pelo modo Simulado.
+**Total oficial atual: 150 cards.**
+
+Em toda abertura do app (servido por `http://`/`https://` — sob duplo clique direto em `index.html`, sem servidor, isso não funciona por restrição do navegador), [`js/catalogSync.js`](js/catalogSync.js) lê esse catálogo e:
+
+1. busca cada arquivo listado;
+2. para cada card cujo `id` **ainda não existe** no seu banco local, adiciona com progresso zerado;
+3. cards cujo `id` **já existe** localmente nunca são tocados — nem o conteúdo, nem (principalmente) o progresso de estudo, histórico ou domínio.
+
+Isso significa que a sincronização é **só de adição, nunca de substituição**: um usuário que já tem os 40 cards da Lei 3.268/1957 com meses de progresso, ao abrir a versão atual do app, mantém esse progresso intocado e só recebe automaticamente os 110 cards das duas Resoluções que ainda não tinha. Um usuário novo recebe os 150 de uma vez, todos zerados.
+
+### Adicionando uma nova norma ao catálogo oficial
+
+Não é preciso alterar `app.js`, `state.js` ou qualquer lógica do app. Só:
+
+1. coloque o novo arquivo `.json` (no formato descrito em [`docs/formato-json.md`](docs/formato-json.md)) em `data/`;
+2. acrescente uma entrada em `data/catalog.json`:
+   ```json
+   { "arquivo": "data/nome-do-arquivo.json", "norma": "Nome da norma" }
+   ```
+3. (recomendado) acrescente o mesmo arquivo à lista `CORE_ASSETS` de [`sw.js`](sw.js) e suba a versão de `CACHE_NAME`, para que fique disponível offline desde a primeira sincronização — sem isso, ainda funciona, só entra no cache depois do primeiro carregamento online;
+4. publique.
+
+Todo usuário existente recebe automaticamente só os cards novos na próxima vez que abrir o app; ninguém perde progresso.
+
+### Importação manual — continua disponível
+
+A tela **Importar flashcards** não foi removida e continua útil para bancos particulares, testes, cards experimentais ou qualquer banco que você ainda não queira incorporar ao catálogo oficial. Veja [`docs/formato-json.md`](docs/formato-json.md) para o formato completo de cada campo, incluindo os tipos `certo_errado` e `multipla_escolha` usados pelo modo Simulado.
 
 ## Funcionalidades
 

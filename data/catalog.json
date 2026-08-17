@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0",
+  "descricao": "Catálogo dos bancos de flashcards OFICIAIS, carregados automaticamente na primeira utilização e sincronizados (apenas adição de cards novos, nunca sobrescrita) em toda inicialização do app. Para incorporar uma nova norma ao catálogo oficial: 1) adicione o arquivo JSON em data/; 2) acrescente uma entrada abaixo; 3) publique. Nenhuma alteração de código é necessária.",
+  "bancos_oficiais": [
+    { "arquivo": "data/lei-3268-1957.json", "norma": "Lei 3.268/1957" },
+    { "arquivo": "data/resolucao-cfm-2056-2013.json", "norma": "Resolução CFM 2.056/2013" },
+    { "arquivo": "data/resolucao-cfm-2336-2023.json", "norma": "Resolução CFM 2.336/2023" }
+  ]
+}

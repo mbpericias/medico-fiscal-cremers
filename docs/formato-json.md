@@ -4,7 +4,7 @@ A tela **Importar flashcards** aceita dois formatos equivalentes: o **envelope**
 
 ## Formato envelope (recomendado)
 
-É o formato usado pelo banco inicial da Lei 3.268/1957 e o recomendado para os próximos bancos que você importar:
+É o formato usado pelos três bancos oficiais atuais (Lei 3.268/1957 e Resoluções CFM 2.056/2013 e 2.336/2023) e o recomendado para os próximos bancos que você importar ou incorporar ao catálogo:
 
 ```json
 {
@@ -87,6 +87,8 @@ Se preferir, pode importar só o array de cards, sem o envelope:
 
 Só entram no Simulado cards `certo_errado` (com `gabarito`) ou `multipla_escolha` (com `opcoes` e uma alternativa `correta: true`). Cards `pergunta_direta` ou `completar` sem gabarito objetivo não aparecem no Simulado, pois o aplicativo nunca inventa alternativas.
 
-## Sobre o banco inicial (Lei 3.268/1957)
+## Bancos oficiais vs. importação manual
 
-O arquivo [`data/lei-3268-1957.json`](../data/lei-3268-1957.json) já contém os 40 flashcards da Lei 3.268/1957, exatamente como fornecidos — o aplicativo nunca gera, completa, resume ou corrige texto de lei. Quando o app é aberto pela primeira vez num navegador/dispositivo (servido por `http://` ou `https://`, não por duplo clique direto no arquivo), ele tenta carregar esse banco automaticamente; se isso não for possível (por exemplo, abrindo o `index.html` direto com duplo clique), basta importar o mesmo arquivo manualmente uma vez pela tela **Importar flashcards**. Bancos futuros de outras normas devem seguir o mesmo formato envelope e serão sempre importados manualmente por você, do mesmo jeito.
+Os arquivos listados em [`data/catalog.json`](../data/catalog.json) — atualmente Lei 3.268/1957, Resolução CFM 2.056/2013 e Resolução CFM 2.336/2023, 150 cards no total — são carregados **automaticamente** em toda abertura do app (servido por `http://`/`https://`), sem qualquer alteração de conteúdo, e só *adicionam* cards cujo `id` ainda não existe localmente; nunca sobrescrevem ou apagam progresso. Veja a seção "Catálogo de bancos oficiais" no [`README.md`](../README.md) para os detalhes desse mecanismo e como incluir uma nova norma nele.
+
+Qualquer outro banco — particular, experimental, ou uma norma que você ainda não quer tornar oficial — continua entrando exclusivamente pela tela **Importar flashcards**, manualmente, como descrito acima.

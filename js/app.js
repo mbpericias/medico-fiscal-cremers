@@ -8,11 +8,8 @@
   var UI = global.MF.UI;
   var State = global.MF.State;
   var Router = global.MF.Router;
-  var Storage = global.MF.Storage;
-  var CardsModel = global.MF.CardsModel;
+  var CatalogSync = global.MF.CatalogSync;
   var el = UI.el;
-
-  var SEED_FILE = 'data/lei-3268-1957.json';
 
   var NAV_ITEMS = [
     { route: 'dashboard', emoji: '🏠', label: 'Início' },
@@ -140,50 +137,28 @@
   }
 
   /**
-   * Na primeiríssima execução, se o banco estiver vazio, tenta carregar
-   * automaticamente o banco inicial (data/lei-3268-1957.json) por fetch —
-   * só funciona quando servido por http(s) (ex.: serve.ps1 ou hospedagem),
-   * já que fetch a arquivo local (file://) é bloqueado pelo navegador. Se
-   * falhar, não há problema: o usuário sempre pode importar o mesmo arquivo
-   * manualmente pela tela "Importar flashcards". Roda no máximo uma vez por
-   * dispositivo/navegador — nunca tenta de novo, mesmo que o usuário depois
-   * apague todos os cards de propósito.
+   * Sincroniza o banco local com o catálogo de normas oficiais
+   * (data/catalog.json) — só ADICIONA cards oficiais cujo id ainda não
+   * existe localmente; nunca apaga, sobrescreve ou zera progresso. Roda em
+   * toda inicialização (é barata e idempotente: se nada mudou no catálogo,
+   * não faz nada). Só funciona quando servido por http(s) — sob file://, o
+   * fetch é bloqueado pelo navegador e a sincronização falha silenciosamente
+   * (a importação manual pela tela "Importar flashcards" continua disponível).
+   * Ver js/catalogSync.js para os detalhes.
    */
-  function trySeedInitialDeck() {
-    var meta = Storage.getMeta();
-    if (meta.seedAttempted) return;
-    if (State.getAllCards().length > 0) {
-      meta.seedAttempted = true;
-      Storage.setMeta(meta);
-      return;
-    }
-
-    fetch(SEED_FILE)
-      .then(function (res) { if (!res.ok) throw new Error('HTTP ' + res.status); return res.json(); })
-      .then(function (parsed) {
-        var extracted = CardsModel.extractCardsArray(parsed);
-        if (!extracted.cardsArray || extracted.cardsArray.length === 0) return;
-        var report = CardsModel.analyzeImportBatch(parsed, {});
-        if (report.novos.length > 0) {
-          State.importCards(report.novos);
-          UI.toast(report.novos.length + ' flashcards do banco inicial (' + (extracted.meta && extracted.meta.norma ? extracted.meta.norma : 'Lei 3.268/1957') + ') carregados automaticamente.');
-          Router.refresh();
-        }
-      })
-      .catch(function (err) {
-        console.warn('Carregamento automático do banco inicial não disponível (normal em file://):', err.message);
-      })
-      .then(function () {
-        var m = Storage.getMeta();
-        m.seedAttempted = true;
-        Storage.setMeta(m);
-      });
+  function syncOfficialCatalog() {
+    CatalogSync.sync().then(function (summary) {
+      if (summary.added > 0) {
+        UI.toast(summary.added + ' flashcard(s) oficiais novos adicionados automaticamente.');
+        Router.refresh();
+      }
+    });
   }
 
   function init() {
     State.load();
     applyTheme();
-    trySeedInitialDeck();
+    syncOfficialCatalog();
     var mainContent = buildShell();
     registerRoutes();
     Router.onNavigate(function (name) {
