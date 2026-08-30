@@ -4,6 +4,9 @@
   "bancos_oficiais": [
     { "arquivo": "data/lei-3268-1957.json", "norma": "Lei 3.268/1957" },
     { "arquivo": "data/resolucao-cfm-2056-2013.json", "norma": "Resolução CFM 2.056/2013" },
-    { "arquivo": "data/resolucao-cfm-2336-2023.json", "norma": "Resolução CFM 2.336/2023" }
+    { "arquivo": "data/resolucao-cfm-2336-2023.json", "norma": "Resolução CFM 2.336/2023" },
+    { "arquivo": "data/regimento-interno-cremers.json", "norma": "Regimento Interno do CREMERS" },
+    { "arquivo": "data/lei-12842-2013.json", "norma": "Lei 12.842/2013" },
+    { "arquivo": "data/resolucao-cfm-2147-2016.json", "norma": "Resolução CFM 2.147/2016" }
   ]
 }

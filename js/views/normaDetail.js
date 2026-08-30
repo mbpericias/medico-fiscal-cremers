@@ -61,7 +61,10 @@
     }
     container.appendChild(temaCard);
 
-    container.appendChild(el('div', { class: 'section-title' }, ['Cards difíceis (domínio baixo)']));
+    container.appendChild(el('div', { class: 'section-title' }, ['🔴 Cards fracos']));
+    container.appendChild(cardListMini(detail.weak));
+
+    container.appendChild(el('div', { class: 'section-title' }, ['🟠 Cards difíceis (em aprendizado)']));
     container.appendChild(cardListMini(detail.difficult));
 
     container.appendChild(el('div', { class: 'section-title' }, ['Errados recentemente (sem acertos desde então)']));

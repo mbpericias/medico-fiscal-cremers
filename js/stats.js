@@ -74,15 +74,18 @@
 
   function perNormaStats() {
     var normas = State.getAllNormas();
+    var today = SRS.todayStr();
     return normas.map(function (norma) {
       var cards = State.getAllCards().filter(function (c) { return c.norma === norma; });
       var ids = cards.map(function (c) { return c.id; });
       var dom = [0, 0, 0, 0];
       var studied = 0;
+      var dueTodayCount = 0;
       cards.forEach(function (c) {
         var p = State.getProgress(c.id);
         dom[p.dominance]++;
         if (p.reviews > 0) studied++;
+        if (SRS.isNewCard(p) || SRS.isDue(p, today)) dueTodayCount++;
       });
       var acc = accuracyPercent(ids);
       var masteryPercent = cards.length ? Math.round((dom[3] / cards.length) * 100) : 0;
@@ -91,6 +94,7 @@
         total: cards.length,
         studied: studied,
         novos: cards.length - studied,
+        dueToday: dueTodayCount,
         dominancePercent: cards.length ? Math.round((dom.reduce(function (s, v, i) { return s + v * (i / 3); }, 0) / cards.length) * 100) : 0,
         masteryPercent: masteryPercent,
         accuracy: acc,
@@ -104,7 +108,8 @@
     var ids = cards.map(function (c) { return c.id; });
     var dom = [0, 0, 0, 0];
     var studied = 0;
-    var difficult = [];
+    var weak = [];       // 🔴 Fraco (dominance 0), já estudado ao menos uma vez
+    var difficult = [];  // 🟠 Em aprendizado (dominance 1)
     var recentlyWrong = [];
     var temaStats = {};
 
@@ -112,7 +117,8 @@
       var p = State.getProgress(c.id);
       dom[p.dominance]++;
       if (p.reviews > 0) studied++;
-      if (p.dominance <= 1 && p.reviews > 0) difficult.push(c);
+      if (p.dominance === 0 && p.reviews > 0) weak.push(c);
+      if (p.dominance === 1 && p.reviews > 0) difficult.push(c);
       if (p.wrong > 0 && p.correctStreak === 0 && p.reviews > 0) recentlyWrong.push(c);
 
       if (!temaStats[c.tema]) temaStats[c.tema] = { tema: c.tema, total: 0, sumDom: 0 };
@@ -132,6 +138,7 @@
       novos: cards.length - studied,
       accuracy: accuracyPercent(ids),
       dominanceCounts: dom,
+      weak: weak,
       difficult: difficult,
       recentlyWrong: recentlyWrong,
       worstTemas: temaList.slice(0, 5)

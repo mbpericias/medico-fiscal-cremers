@@ -116,23 +116,31 @@
       shortcutTile('🎯', 'Simulado', null, function () { Router.navigate('/simulado'); })
     ]));
 
-    container.appendChild(el('div', { class: 'section-title' }, ['Desempenho por norma']));
+    container.appendChild(el('div', { class: 'section-title' }, ['Escolha o que estudar']));
     var normaStats = Stats.perNormaStats();
-    var normaCard = el('div', { class: 'card' });
     if (normaStats.length === 0) {
-      normaCard.appendChild(el('div', { class: 'empty-state' }, ['Nenhuma norma cadastrada ainda.']));
+      container.appendChild(el('div', { class: 'card empty-state' }, ['Nenhuma norma cadastrada ainda.']));
     } else {
+      var normaGrid = el('div', { class: 'norma-tile-grid' });
       normaStats.forEach(function (n) {
-        normaCard.appendChild(el('div', {
-          class: 'norma-row', onclick: function () { Router.navigate('/norma/' + encodeURIComponent(n.norma)); }
+        normaGrid.appendChild(el('div', {
+          class: 'card norma-tile', onclick: function () { Router.navigate('/norma/' + encodeURIComponent(n.norma)); }
         }, [
-          el('div', { class: 'norma-name' }, [n.norma]),
-          el('div', { class: 'progress-bar' }, [el('div', { style: 'width:' + n.dominancePercent + '%' })]),
-          el('div', { class: 'norma-pct' }, [n.dominancePercent + '%'])
+          el('div', { class: 'flex justify-between items-center' }, [
+            el('div', { class: 'norma-tile-name' }, [n.norma]),
+            el('div', { class: 'norma-tile-pct' }, [n.dominancePercent + '%'])
+          ]),
+          el('div', { class: 'progress-bar mt-8' }, [el('div', { style: 'width:' + n.dominancePercent + '%' })]),
+          el('div', { class: 'norma-tile-stats mt-8' }, [
+            el('span', {}, ['📚 ' + n.total + ' total']),
+            el('span', {}, ['🆕 ' + n.novos + ' novos']),
+            el('span', {}, ['📅 ' + n.dueToday + ' hoje']),
+            el('span', {}, ['🧠 ' + n.dominanceCounts[3] + ' dominados'])
+          ])
         ]));
       });
+      container.appendChild(normaGrid);
     }
-    container.appendChild(normaCard);
   }
 
   global.MF = global.MF || {};
