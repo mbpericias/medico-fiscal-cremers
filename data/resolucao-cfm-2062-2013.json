@@ -9,7 +9,7 @@
   "cards": [
     {
       "id": "R2062-001",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 1º",
       "tema": "Conceito de interdição ética",
       "prioridade": 5,
@@ -22,7 +22,7 @@
     },
     {
       "id": "R2062-002",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 1º, §§ 1º e 2º",
       "tema": "Interdição total e parcial",
       "prioridade": 5,
@@ -35,7 +35,7 @@
     },
     {
       "id": "R2062-003",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 1º, § 3º",
       "tema": "Indicativo de interdição",
       "prioridade": 5,
@@ -48,7 +48,7 @@
     },
     {
       "id": "R2062-004",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 1º, § 3º",
       "tema": "Indicativo de interdição",
       "prioridade": 5,
@@ -62,7 +62,7 @@
     },
     {
       "id": "R2062-005",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 1º, § 3º",
       "tema": "Fundamentos do indicativo",
       "prioridade": 4,
@@ -75,7 +75,7 @@
     },
     {
       "id": "R2062-006",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 1º, § 4º",
       "tema": "Alcance da interdição",
       "prioridade": 5,
@@ -89,7 +89,7 @@
     },
     {
       "id": "R2062-007",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 1º, §§ 5º e 6º",
       "tema": "Autos de interdição e desinterdição",
       "prioridade": 4,
@@ -102,7 +102,7 @@
     },
     {
       "id": "R2062-008",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 1º, § 6º",
       "tema": "Auto de Desinterdição",
       "prioridade": 5,
@@ -115,7 +115,7 @@
     },
     {
       "id": "R2062-009",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 2º",
       "tema": "Pressuposto da interdição",
       "prioridade": 5,
@@ -129,7 +129,7 @@
     },
     {
       "id": "R2062-010",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 2º, parágrafo único",
       "tema": "Requisitos mínimos",
       "prioridade": 5,
@@ -142,7 +142,7 @@
     },
     {
       "id": "R2062-011",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 2º, parágrafo único, I",
       "tema": "Ambiente físico",
       "prioridade": 4,
@@ -156,7 +156,7 @@
     },
     {
       "id": "R2062-012",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 2º, parágrafo único, II",
       "tema": "Equipamentos",
       "prioridade": 4,
@@ -169,7 +169,7 @@
     },
     {
       "id": "R2062-013",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 3º",
       "tema": "Prazo para correção",
       "prioridade": 5,
@@ -182,7 +182,7 @@
     },
     {
       "id": "R2062-014",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 3º, § 1º",
       "tema": "Relatório de fiscalização",
       "prioridade": 4,
@@ -195,7 +195,7 @@
     },
     {
       "id": "R2062-015",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 3º, § 2º",
       "tema": "Termo de Responsabilidade Recíproca",
       "prioridade": 5,
@@ -208,7 +208,7 @@
     },
     {
       "id": "R2062-016",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 3º, §§ 3º e 4º",
       "tema": "Indicativo de interdição",
       "prioridade": 5,
@@ -221,7 +221,7 @@
     },
     {
       "id": "R2062-017",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 3º, § 5º",
       "tema": "Persistência das não conformidades",
       "prioridade": 5,
@@ -234,7 +234,7 @@
     },
     {
       "id": "R2062-018",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 4º",
       "tema": "Competência para interdição",
       "prioridade": 5,
@@ -247,7 +247,7 @@
     },
     {
       "id": "R2062-019",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 4º",
       "tema": "Competência do médico fiscal",
       "prioridade": 5,
@@ -261,7 +261,7 @@
     },
     {
       "id": "R2062-020",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 4º, parágrafo único",
       "tema": "Consultório privado",
       "prioridade": 5,
@@ -275,7 +275,7 @@
     },
     {
       "id": "R2062-021",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 5º, alíneas e e f",
       "tema": "Responsabilidade pelas providências",
       "prioridade": 5,
@@ -288,7 +288,7 @@
     },
     {
       "id": "R2062-022",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 5º, alínea g",
       "tema": "Pacientes internados",
       "prioridade": 5,
@@ -302,7 +302,7 @@
     },
     {
       "id": "R2062-023",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 5º, alínea g",
       "tema": "Novas internações",
       "prioridade": 5,
@@ -316,7 +316,7 @@
     },
     {
       "id": "R2062-024",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 5º, alínea h",
       "tema": "Diretor clínico",
       "prioridade": 4,
@@ -329,7 +329,7 @@
     },
     {
       "id": "R2062-025",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 5º, alíneas i e j",
       "tema": "Cessação das não conformidades",
       "prioridade": 5,
@@ -343,7 +343,7 @@
     },
     {
       "id": "R2062-026",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 5º, § 2º",
       "tema": "Natureza excepcional",
       "prioridade": 5,
@@ -357,7 +357,7 @@
     },
     {
       "id": "R2062-027",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 6º",
       "tema": "Notificação da interdição",
       "prioridade": 5,
@@ -370,7 +370,7 @@
     },
     {
       "id": "R2062-028",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 6º, parágrafo único",
       "tema": "Comunicação a outros órgãos",
       "prioridade": 4,
@@ -384,7 +384,7 @@
     },
     {
       "id": "R2062-029",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 7º",
       "tema": "Duração da interdição",
       "prioridade": 5,
@@ -397,7 +397,7 @@
     },
     {
       "id": "R2062-030",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 7º",
       "tema": "Prorrogação da interdição",
       "prioridade": 5,
@@ -411,7 +411,7 @@
     },
     {
       "id": "R2062-031",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 8º",
       "tema": "Publicidade da interdição",
       "prioridade": 4,
@@ -424,7 +424,7 @@
     },
     {
       "id": "R2062-032",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 8º, I e II",
       "tema": "Publicidade da interdição",
       "prioridade": 4,
@@ -437,7 +437,7 @@
     },
     {
       "id": "R2062-033",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 9º",
       "tema": "Efeitos da interdição",
       "prioridade": 5,
@@ -451,7 +451,7 @@
     },
     {
       "id": "R2062-034",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 9º, parágrafo único",
       "tema": "Desinterdição",
       "prioridade": 5,
@@ -464,7 +464,7 @@
     },
     {
       "id": "R2062-035",
-      "norma": "Resolução CFM nº 2.062/2013",
+      "norma": "Resolução CFM 2.062/2013",
       "artigo": "Art. 10",
       "tema": "Modificação e revogação",
       "prioridade": 5,
