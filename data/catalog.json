@@ -8,6 +8,7 @@
     { "arquivo": "data/regimento-interno-cremers.json", "norma": "Regimento Interno do CREMERS" },
     { "arquivo": "data/lei-12842-2013.json", "norma": "Lei 12.842/2013" },
     { "arquivo": "data/resolucao-cfm-2147-2016.json", "norma": "Resolução CFM 2.147/2016" },
-    { "arquivo": "data/resolucao-cfm-2062-2013.json", "norma": "Resolução CFM nº 2.062/2013" }
+    { "arquivo": "data/resolucao-cfm-2062-2013.json", "norma": "Resolução CFM nº 2.062/2013" },
+    { "arquivo": "data/resolucao-cfm-1980-2011.json", "norma": "Resolução CFM 1.980/2011" }
   ]
 }
