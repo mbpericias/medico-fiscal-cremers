@@ -19,7 +19,7 @@
  * fetch online), só não entram no pré-cache da instalação.
  */
 
-var CACHE_NAME = 'mf-cremers-v8';
+var CACHE_NAME = 'mf-cremers-v9';
 
 var CORE_ASSETS = [
   './',
@@ -55,6 +55,7 @@ var CORE_ASSETS = [
   './data/regimento-interno-cremers.json',
   './data/lei-12842-2013.json',
   './data/resolucao-cfm-2147-2016.json',
+  './data/resolucao-cfm-2062-2013.json',
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/icon-maskable-192.png',
