@@ -51,6 +51,44 @@
   }
 
   /**
+   * Reordena uma lista de cards (já ordenada por urgência/relevância dentro
+   * de cada norma) round-robin entre as normas presentes, preservando a
+   * ordem relativa dentro de cada uma.
+   *
+   * Sem isso, um mode que soma cards de VÁRIAS normas (smart, novos, erros,
+   * difíceis, pegadinhas, alta prioridade) pode, ao cortar para os N
+   * primeiros, devolver uma fatia dominada por 1-2 normas — por exemplo,
+   * quando há um grande acúmulo de revisões atrasadas em normas já
+   * estudadas, essas revisões vencem no peso e "engolem" os slots que
+   * caberiam a cards novos de normas ainda não tocadas. O round-robin
+   * garante que toda norma presente nos candidatos apareça na sessão antes
+   * de qualquer norma repetir um segundo card.
+   */
+  function interleaveByNorma(cards) {
+    var buckets = {};
+    var order = [];
+    cards.forEach(function (c) {
+      if (!buckets[c.norma]) { buckets[c.norma] = []; order.push(c.norma); }
+      buckets[c.norma].push(c);
+    });
+    if (order.length <= 1) return cards;
+
+    var result = [];
+    var remaining = cards.length;
+    var idx = 0;
+    while (remaining > 0) {
+      var norma = order[idx % order.length];
+      var bucket = buckets[norma];
+      if (bucket.length > 0) {
+        result.push(bucket.shift());
+        remaining -= 1;
+      }
+      idx += 1;
+    }
+    return result;
+  }
+
+  /**
    * Seleciona os cards-candidatos para um modo, sem ainda limitar quantidade.
    * `params` pode conter { norma, tema }.
    */
@@ -60,17 +98,22 @@
     var today = SRS.todayStr();
 
     switch (mode) {
+      // Nos modes abaixo que juntam cards de VÁRIAS normas, o resultado passa
+      // por interleaveByNorma antes de devolver: a ordenação por peso/urgência
+      // é preservada dentro de cada norma, mas o corte para os N primeiros
+      // (feito depois, em createSession) sempre alcança todas as normas
+      // presentes nos candidatos, em vez de ser dominado por 1-2 delas.
       case MODES.SMART:
-        return weightedSortSmart(all.filter(function (c) {
+        return interleaveByNorma(weightedSortSmart(all.filter(function (c) {
           var p = State.getProgress(c.id);
           return SRS.isNewCard(p) || SRS.isDue(p, today);
-        }));
+        })));
 
       case MODES.NEW:
-        return shuffle(all.filter(function (c) { return SRS.isNewCard(State.getProgress(c.id)); }));
+        return interleaveByNorma(shuffle(all.filter(function (c) { return SRS.isNewCard(State.getProgress(c.id)); })));
 
       case MODES.ERRORS:
-        return all
+        return interleaveByNorma(all
           .map(function (c) { return { c: c, p: State.getProgress(c.id) }; })
           .filter(function (x) { return x.p.wrong > 0; })
           .sort(function (a, b) {
@@ -78,21 +121,21 @@
             if (a.p.dominance !== b.p.dominance) return a.p.dominance - b.p.dominance;
             return b.c.prioridade - a.c.prioridade;
           })
-          .map(function (x) { return x.c; });
+          .map(function (x) { return x.c; }));
 
       case MODES.HARD:
-        return all
+        return interleaveByNorma(all
           .map(function (c) { return { c: c, p: State.getProgress(c.id) }; })
           .filter(function (x) { return x.p.reviews > 0 && x.p.dominance <= 1; })
           .sort(function (a, b) { return a.p.dominance - b.p.dominance; })
-          .map(function (x) { return x.c; });
+          .map(function (x) { return x.c; }));
 
       case MODES.TRICKY:
-        return shuffle(all.filter(function (c) { return c.pegadinha === true; }));
+        return interleaveByNorma(shuffle(all.filter(function (c) { return c.pegadinha === true; })));
 
       case MODES.PRIORITY:
-        return shuffle(all.filter(function (c) { return c.prioridade >= 4; }))
-          .sort(function (a, b) { return b.prioridade - a.prioridade; });
+        return interleaveByNorma(shuffle(all.filter(function (c) { return c.prioridade >= 4; }))
+          .sort(function (a, b) { return b.prioridade - a.prioridade; }));
 
       case MODES.NORMA:
         return weightedSortSmart(all.filter(function (c) { return c.norma === params.norma; }));

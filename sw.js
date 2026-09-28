@@ -19,7 +19,7 @@
  * fetch online), só não entram no pré-cache da instalação.
  */
 
-var CACHE_NAME = 'mf-cremers-v11';
+var CACHE_NAME = 'mf-cremers-v12';
 
 var CORE_ASSETS = [
   './',
