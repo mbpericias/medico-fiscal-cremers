@@ -19,7 +19,7 @@
  * fetch online), só não entram no pré-cache da instalação.
  */
 
-var CACHE_NAME = 'mf-cremers-v12';
+var CACHE_NAME = 'mf-cremers-v13';
 
 var CORE_ASSETS = [
   './',
@@ -58,6 +58,9 @@ var CORE_ASSETS = [
   './data/resolucao-cfm-2062-2013.json',
   './data/resolucao-cfm-1980-2011.json',
   './data/resolucao-cfm-2416-2024.json',
+  './data/resolucao-cfm-2314-2022.json',
+  './data/resolucao-cfm-2057-2013.json',
+  './data/resolucao-cfm-2152-2016.json',
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/icon-maskable-192.png',

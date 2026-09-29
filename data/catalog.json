@@ -10,6 +10,9 @@
     { "arquivo": "data/resolucao-cfm-2147-2016.json", "norma": "Resolução CFM 2.147/2016" },
     { "arquivo": "data/resolucao-cfm-2062-2013.json", "norma": "Resolução CFM nº 2.062/2013" },
     { "arquivo": "data/resolucao-cfm-1980-2011.json", "norma": "Resolução CFM 1.980/2011" },
-    { "arquivo": "data/resolucao-cfm-2416-2024.json", "norma": "Resolução CFM 2.416/2024" }
+    { "arquivo": "data/resolucao-cfm-2416-2024.json", "norma": "Resolução CFM 2.416/2024" },
+    { "arquivo": "data/resolucao-cfm-2314-2022.json", "norma": "Resolução CFM 2.314/2022" },
+    { "arquivo": "data/resolucao-cfm-2057-2013.json", "norma": "Resolução CFM 2.057/2013" },
+    { "arquivo": "data/resolucao-cfm-2152-2016.json", "norma": "Resolução CFM 2.152/2016" }
   ]
 }
