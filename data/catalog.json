@@ -14,6 +14,7 @@
     { "arquivo": "data/resolucao-cfm-2314-2022.json", "norma": "Resolução CFM 2.314/2022" },
     { "arquivo": "data/resolucao-cfm-2057-2013.json", "norma": "Resolução CFM 2.057/2013" },
     { "arquivo": "data/resolucao-cfm-2152-2016.json", "norma": "Resolução CFM 2.152/2016" },
-    { "arquivo": "data/redacao-medico-fiscal.json", "norma": "Redação — Médico Fiscal" }
+    { "arquivo": "data/redacao-medico-fiscal.json", "norma": "Redação — Médico Fiscal" },
+    { "arquivo": "data/redacao-medico-fiscal-parte-2.json", "norma": "Redação — Médico Fiscal" }
   ]
 }
